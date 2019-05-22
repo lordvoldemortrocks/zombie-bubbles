@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import * as R from 'ramda';
 import BubbleViz from './ForcedArcticBubbles/ForcedArcticBubbles';
 import { MOCK_DATA } from './mock';
+import './App.css';
 
 const randomBtw = (min = 1, max = 1) => {
   return Math.floor(Math.random() * Math.max(1, max) + Math.max(0, min));
@@ -23,12 +24,11 @@ const generateBubbles = (count = 20) =>
   }));
 
 const generateZombies = (count = 0) => {
-  const randomer = d3.randomUniform(10, 100);
   const getPercentage = R.pipe(
     R.divide(R.__, count),
     R.multiply(100)
   );
-  const groupGenerator = d3.randomUniform(0, 4);
+  const groupGenerator = () => (Math.random() * 4) | 0;
   const radiusGenerator = d3.randomUniform(4, 10);
   const zombies = d3.range(count).map((x, i) => {
     const group = Math.floor(groupGenerator());
@@ -53,8 +53,6 @@ const generateZombies = (count = 0) => {
         .map(x => ({ ...x, color: DARK_COLORS[x.index] }))
     : [];
 
-  console.log('percentages', percentages);
-
   return {
     slices,
     zombies
@@ -69,7 +67,7 @@ class App extends React.Component {
   updateData = () => {
     this.setState({
       bubbles: generateBubbles(20),
-      ...generateZombies(500)
+      ...generateZombies(1000)
     });
   };
 

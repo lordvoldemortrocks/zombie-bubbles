@@ -17,7 +17,6 @@ class ForcedArcticBubbles extends React.Component {
       zombies = []
     } = this.props;
     const center = [width / 2, height / 2];
-    console.log('ForcedArcticBubbles', this.props);
 
     return (
       <div className="bubble-viz">
