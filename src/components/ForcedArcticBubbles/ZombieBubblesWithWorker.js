@@ -10,8 +10,8 @@ const ZombieBubblesWithWorker = props => {
   const { center, diameter, data = [], slices = [], style = {} } = props;
   const ele = useRef(null);
   const bubbles = data.map(d => <circle key={d.index + 'b'} />);
-  const renderBubbles = () => {
-    const nodes = worker.calculateForces({ nodes: data, slices, diameter });
+  const renderBubbles = async () => {
+    const nodes = await worker.calculateForces({ nodes: data, slices, diameter });
     const bubbles = d3
       .select(ele.current)
       .selectAll('circle')
