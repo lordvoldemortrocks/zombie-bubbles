@@ -27,13 +27,9 @@ const forceCluster = groups => {
   return force;
 };
 
-export const sayHello = props => {
-  // console.log('sayHello', props);
-  console.log('Hello, world!');
-};
+export const sayHello = props => {};
 
 export const calculateForces = props => {
-  // console.log('calculateForces', props);
   const { nodes = [], slices = [], diameter = 300 } = props;
   const innerRadius = (diameter + 150) / 2;
   const outerRadius = innerRadius + 80;
@@ -66,8 +62,6 @@ export const calculateForces = props => {
   const iterations = Math.ceil(
     Math.log(simulation.alphaMin()) / Math.log(1 - simulation.alphaDecay())
   );
-
-  console.log('iterations', iterations);
 
   for (var i = 0; i <= iterations; ++i) {
     simulation.tick();

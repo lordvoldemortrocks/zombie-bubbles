@@ -67,7 +67,7 @@ class App extends React.Component {
   updateData = () => {
     this.setState({
       bubbles: generateBubbles(20),
-      ...generateZombies(1000)
+      ...generateZombies(500)
     });
   };
 
